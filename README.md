@@ -55,4 +55,14 @@ You can modified the config of spark in this script.
 3. View the flamegraph
 
 The final svg file will be created in `target` folder.
-Use browser or other tools to view it.
+Use browser or other tools to view it
+
+# Losing Rate Check
+
+Because in our case, we saw some data with null value of "Stacktrace" column. We guessed it means something lost.
+Therefore, `DataLoseRateConsumer` is a simple check for losing data.
+It's very easy to use to check for specific topic of kafka if it occurred data losing.
+
+```shell
+./sbin/run-comsumer.sh $PREFIX
+```
