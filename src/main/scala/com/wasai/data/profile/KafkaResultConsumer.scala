@@ -50,7 +50,7 @@ object KafkaResultConsumer {
     val checkpointLocation = outputRoot + "/" + prefix + "-checkpoint"
 
     val kStreamDF = spark.readStream.format("kafka").option("kafka.bootstrap.servers", kafkaBrokers)
-      .option("subscribe", kafkaTopic).option("startingOffsets", "earliest").load()
+      .option("subscribe", kafkaTopic).option("startingOffsets", "latest").load()
 
     kStreamDF.select(from_json(col("value").cast("string"), schema) as "js")
       .filter(size(column("js").getField("stacktrace")) > 0)
