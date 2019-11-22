@@ -29,7 +29,7 @@ object DataLoseRateConsumer {
   )
 
   def batchProcess(prefix: String): (Long, Long) = {
-    val kafkaTopic = prefix + "_Stacktrace"
+    val kafkaTopic = prefix + "Stacktrace"
 
     val kStreamDF = spark.read.format("kafka").option("kafka.bootstrap.servers", kafkaBrokers)
       .option("subscribe", kafkaTopic).option("startingOffsets", "earliest").load()
