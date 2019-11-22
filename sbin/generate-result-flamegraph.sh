@@ -19,11 +19,8 @@ else
             mkdir target
         fi
 
-        # empty file
-        cat /dev/null > target/$PREFIX-result.folded
-
         for f in $RESULT_DIR/*.csv; do
-            cat $f >> target/$PREFIX-result.folded
+            cat $f > target/$PREFIX-result.folded
         done
 
         ./sbin/flamegraph.pl target/$PREFIX-result.folded > target/$PREFIX-fg.svg

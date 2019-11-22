@@ -30,7 +30,7 @@ object KafkaResultConsumer {
   )
 
   def batchProcess(prefix: String): Unit = {
-    val kafkaTopic = prefix + "Stacktrace"
+    val kafkaTopic = prefix + "_Stacktrace"
     val outputPath = outputRoot + "/" + prefix + "-result"
 
     val kStreamDF = spark.read.format("kafka").option("kafka.bootstrap.servers", kafkaBrokers)
@@ -45,7 +45,7 @@ object KafkaResultConsumer {
   }
 
   def streamingProcess(prefix: String): Unit = {
-    val kafkaTopic = prefix + "Stacktrace"
+    val kafkaTopic = prefix + "_Stacktrace"
     val outputPath = outputRoot + "/" + prefix + "-result"
     val checkpointLocation = outputRoot + "/" + prefix + "-checkpoint"
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-SPARK_HOME=
 PREFIX=$1
 TARGET=target
 
@@ -9,7 +8,7 @@ then
     echo "[ERROR] PREFIX is emptyp."
     echo "[ERROR] You need to assign a prefix to get kafka topic"
 else
-    $SPARK_HOME/bin/spark-submit \
+    spark-submit \
         --master "local[3]" \
         --conf spark.driver.memory=4g \
         --properties-file  kafka.conf \
