@@ -45,7 +45,7 @@ object KafkaResultConsumer {
   }
 
   def streamingProcess(prefix: String): Unit = {
-    val kafkaTopic = prefix + "_Stacktrace"
+    val kafkaTopic = prefix + "Stacktrace"
     val outputPath = outputRoot + "/" + prefix + "-result"
     val checkpointLocation = outputRoot + "/" + prefix + "-checkpoint"
 
